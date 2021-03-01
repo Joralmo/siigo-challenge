@@ -1,0 +1,54 @@
+[
+    {
+        "id_type": "13",
+        "name": "Cédula de ciudadanía"
+    },
+    {
+        "id_type": "31",
+        "name": "NIT"
+    },
+    {
+        "id_type": "22",
+        "name": "Cédula de extranjería"
+    },
+    {
+        "id_type": "42",
+        "name": "Documento de identificación extranjero"
+    },
+    {
+        "id_type": "50",
+        "name": "NIT de otro país"
+    },
+    {
+        "id_type": "R-00-PN",
+        "name": "No obligado a registrarse en el RUT PN"
+    },
+    {
+        "id_type": "91",
+        "name": "NUIP"
+    },
+    {
+        "id_type": "41",
+        "name": "Pasaporte"
+    },
+    {
+        "id_type": "14",
+        "name": "Permiso especial de permanencia PEP"
+    },
+    {
+        "id_type": "11",
+        "name": "Registro civil"
+    },
+    {
+        "id_type": "43",
+        "name": "Sin identificación del exterior o para uso definido por la DIAN"
+    },
+    {
+        "id_type": "21",
+        "name": "Tarjeta de extranjería"
+    },
+    {
+        "id_type": "12",
+        "name": "Tarjeta de identidad"
+    }
+]

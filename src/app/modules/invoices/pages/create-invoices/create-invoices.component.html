@@ -1,0 +1,110 @@
+<mat-card>
+  <mat-card-content>
+    <div class="center">
+      <mat-spinner size="10" *ngIf="loading$ | async"></mat-spinner>
+    </div>
+    <form
+      [formGroup]="formGroup"
+      class="form"
+      (ngSubmit)="create(formGroup.value)"
+    >
+      <mat-form-field class="form_element" appearance="fill">
+        <mat-label>{{ 'DocumentType' | translate }}</mat-label>
+        <mat-select formControlName="document_type">
+          <mat-option
+            *ngFor="let documentType of documentTypes"
+            [value]="documentType.id"
+            >{{ documentType.name }}</mat-option
+          >
+        </mat-select>
+        <mat-error *ngIf="getErrorForm('document_type')">
+          {{ getErrorFormField('DocumentType') }}
+        </mat-error>
+      </mat-form-field>
+
+      <fieldset>
+        <legend>{{ 'Client' | translate }}</legend>
+        <mat-form-field class="form_element" appearance="fill">
+          <mat-label>{{ 'Identification' | translate }}</mat-label>
+          <input formControlName="identification" matInput />
+          <mat-error *ngIf="getErrorForm('identification')">
+            {{ getErrorFormField('Identification') }}
+          </mat-error>
+        </mat-form-field>
+      </fieldset>
+
+      <mat-form-field class="form_element" appearance="fill">
+        <mat-label>{{ 'Seller' | translate }}</mat-label>
+        <mat-select formControlName="seller">
+          <mat-option *ngFor="let seller of sellers" [value]="seller.id">{{
+            seller.username
+          }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="getErrorForm('document_type')">
+          {{ getErrorFormField('Seller') }}
+        </mat-error>
+      </mat-form-field>
+
+      <fieldset>
+        <legend>{{ 'Product' | translate }}</legend>
+        <mat-form-field class="form_element" appearance="fill">
+          <mat-label>{{ 'Code' | translate }}</mat-label>
+          <input formControlName="code" matInput />
+          <mat-error *ngIf="getErrorForm('code')">
+            {{ getErrorFormField('Code') }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form_element" appearance="fill">
+          <mat-label>{{ 'Description' | translate }}</mat-label>
+          <input formControlName="description" matInput />
+          <mat-error *ngIf="getErrorForm('description')">
+            {{ getErrorFormField('Description') }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form_element" appearance="fill">
+          <mat-label>{{ 'Quantity' | translate }}</mat-label>
+          <input formControlName="quantity" matInput />
+          <mat-error *ngIf="getErrorForm('quantity')">
+            {{ getErrorFormField('Quantity') }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form_element" appearance="fill">
+          <mat-label>{{ 'Price' | translate }}</mat-label>
+          <input type="number" formControlName="price" matInput />
+          <mat-error *ngIf="getErrorForm('price')">
+            {{ getErrorFormField('Price') }}
+          </mat-error>
+        </mat-form-field>
+      </fieldset>
+
+      <mat-form-field class="form_element" appearance="fill">
+        <mat-label>{{ 'PaymentMethod' | translate }}</mat-label>
+        <mat-select formControlName="payment_method">
+          <mat-option
+            *ngFor="let paymentMethod of paymentMethods"
+            [value]="paymentMethod.id"
+            >{{ paymentMethod.name }}</mat-option
+          >
+        </mat-select>
+        <mat-error *ngIf="getErrorForm('document_type')">
+          {{ getErrorFormField('PaymentMethod') }}
+        </mat-error>
+      </mat-form-field>
+
+      <div class="form_element">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="button"
+          [disabled]="!formGroup.valid"
+        >
+          {{ 'Create' | translate }}
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

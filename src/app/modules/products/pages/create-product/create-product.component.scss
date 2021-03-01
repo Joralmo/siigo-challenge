@@ -1,0 +1,18 @@
+.create_product {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.form,
+.response_api {
+  width: 100%;
+}
+
+.form_element {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.button {
+  width: 100%;
+}

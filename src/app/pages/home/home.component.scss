@@ -1,0 +1,16 @@
+.main-content {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-list-icon {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+@media (min-width: 700px) {
+  .main-content .mat-card {
+    width: 60%;
+  }
+}

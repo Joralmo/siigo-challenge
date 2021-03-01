@@ -1,0 +1,32 @@
+[
+    {
+        "city_code": "47189",
+        "country_code": "Co",
+        "name": "Ciénaga",
+        "state_code": "47"
+    },
+    {
+        "city_code": "11001",
+        "country_code": "Co",
+        "name": "Bogotá",
+        "state_code": "11"
+    },
+    {
+        "city_code": "47001",
+        "country_code": "Co",
+        "name": "Santa Marta",
+        "state_code": "47"
+    },
+    {
+        "city_code": "8001",
+        "country_code": "Co",
+        "name": "Barranquilla",
+        "state_code": "8"
+    },
+    {
+        "city_code": "13001",
+        "country_code": "Co",
+        "name": "Cartagena",
+        "state_code": "13"
+    }
+]

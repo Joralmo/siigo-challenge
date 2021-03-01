@@ -1,0 +1,61 @@
+<mat-card>
+  <mat-card-content>
+    <div class="center">
+      <mat-spinner size="10" *ngIf="loading$ | async"></mat-spinner>
+    </div>
+    <form [formGroup]="formGroup" *ngIf="!responseApi" class="form" (ngSubmit)="create(formGroup.value)">
+      <mat-form-field class="form_element" appearance="fill">
+        <mat-label>{{ 'InventoryGroup' | translate }}</mat-label>
+        <mat-select formControlName="account_group">
+          <mat-option
+            *ngFor="let inventoryGroup of listInventoryGroups"
+            [value]="inventoryGroup.id"
+            >{{ inventoryGroup.name }}</mat-option
+          >
+        </mat-select>
+        <mat-error *ngIf="getErrorForm('account_group')">
+          {{ getErrorFormField('InventoryGroup') }}
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-form-field class="form_element" appearance="fill">
+        <mat-label>{{ 'Code' | translate }}</mat-label>
+        <input formControlName="code" matInput />
+        <mat-error *ngIf="getErrorForm('code')">
+          {{ getErrorFormField('Code') }}
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-form-field class="form_element" appearance="fill">
+        <mat-label>{{ 'Name' | translate }}</mat-label>
+        <input formControlName="name" matInput />
+        <mat-error *ngIf="getErrorForm('name')">
+          {{ getErrorFormField('Name') }}
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-form-field class="form_element" appearance="fill">
+        <mat-label>{{ 'Price' | translate }}</mat-label>
+        <input formControlName="price" matInput ty type="number"/>
+        <mat-error *ngIf="getErrorForm('price')">
+          {{ getErrorFormField('Price') }}
+        </mat-error>
+      </mat-form-field>
+  
+      <div class="form_element">
+        <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">{{ 'Create' | translate }}</button>
+      </div>
+  
+    </form>
+
+    <div class="response_api" *ngIf="responseApi">
+      <code>
+        <h1>{{ 'ApiResponse' | translate }}</h1>
+        <pre>{{ responseApi | json }}</pre>
+      </code>
+      <div class="form_element">
+        <button (click)="createOtherProduct()" mat-raised-button color="primary" class="button">{{ 'CreateOtherProduct' | translate }}</button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

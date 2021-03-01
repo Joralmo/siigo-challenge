@@ -1,0 +1,167 @@
+<mat-card>
+  <mat-card-content>
+    <div class="center">
+      <mat-spinner size="10" *ngIf="loading$ | async"></mat-spinner>
+    </div>
+    <form
+      [formGroup]="formGroup"
+      class="form"
+      (ngSubmit)="create(formGroup.value)"
+    >
+      <mat-radio-group
+        class="form_element"
+        formControlName="person_type"
+        aria-label="Select an option"
+      >
+        <mat-radio-button [checked]="true" value="1">{{
+          'Person' | translate
+        }}</mat-radio-button>
+        <mat-radio-button value="2">{{
+          'Organization' | translate
+        }}</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field
+        *ngIf="getFieldValue('person_type') === '1'"
+        class="form_element"
+        appearance="fill"
+      >
+        <mat-label>{{ 'Name' | translate }}</mat-label>
+        <input formControlName="name" matInput />
+        <mat-error *ngIf="getErrorForm('name')">
+          {{ getErrorFormField('Name') }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field
+        *ngIf="getFieldValue('person_type') === '1'"
+        class="form_element"
+        appearance="fill"
+      >
+        <mat-label>{{ 'LastName' | translate }}</mat-label>
+        <input formControlName="lastName" matInput />
+        <mat-error *ngIf="getErrorForm('lastName')">
+          {{ getErrorFormField('LastName') }}
+        </mat-error>
+      </mat-form-field>
+      
+
+      <mat-form-field
+        *ngIf="getFieldValue('person_type') === '2'"
+        class="form_element"
+        appearance="fill"
+      >
+        <mat-label>{{ 'BusinessName' | translate }}</mat-label>
+        <input formControlName="name" matInput />
+        <mat-error *ngIf="getErrorForm('name')">
+          {{ getErrorFormField('BusinessName') }}
+        </mat-error>
+      </mat-form-field>
+
+      <fieldset>
+        <legend>{{ 'Identification' | translate }}</legend>
+        <mat-form-field class="form_element" appearance="fill">
+          <mat-label>{{ 'IdentificationType' | translate }}</mat-label>
+          <mat-select formControlName="id_type">
+            <mat-option
+              *ngFor="let idType of identificationTypes"
+              [value]="idType.id_type"
+              >{{ idType.name }}</mat-option
+            >
+          </mat-select>
+          <mat-error *ngIf="getErrorForm('id_type')">
+            {{ getErrorFormField('IdentificationType') }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form_element" appearance="fill">
+          <mat-label>{{
+            (getFieldValue('person_type') === '1' ? 'Identification' : 'Nit')
+              | translate
+          }}</mat-label>
+          <input formControlName="identification" matInput />
+          <mat-error *ngIf="getErrorForm('identification')">
+            {{
+              getErrorFormField(
+                getFieldValue('person_type') === '1' ? 'Identification' : 'Nit'
+              )
+            }}
+          </mat-error>
+        </mat-form-field>
+      </fieldset>
+
+      <mat-form-field
+        class="form_element"
+        appearance="fill"
+      >
+        <mat-label>{{ 'Phone' | translate }}</mat-label>
+        <input formControlName="phone" matInput />
+        <mat-error *ngIf="getErrorForm('phone')">
+          {{ getErrorFormField('Phone') }}
+        </mat-error>
+      </mat-form-field>
+
+      <fieldset>
+        <legend>{{ 'Address' | translate }}</legend>
+        <mat-form-field class="form_element" appearance="fill">
+          <mat-label>{{ 'Direction' | translate }}</mat-label>
+          <input formControlName="address" matInput />
+          <mat-error *ngIf="getErrorForm('address')">
+            {{ getErrorFormField('Direction') }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form_element" appearance="fill">
+          <mat-label>{{ 'City' | translate }}</mat-label>
+          <mat-select formControlName="city">
+            <mat-option *ngFor="let city of cities" [value]="city.city_code">{{
+              city.name
+            }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="getErrorForm('city')">
+            {{ getErrorFormField('City') }}
+          </mat-error>
+        </mat-form-field>
+      </fieldset>
+
+      <fieldset>
+        <legend>{{ 'Contact' | translate }}</legend>
+        <mat-form-field class="form_element" appearance="fill">
+          <mat-label>{{ 'Name' | translate }}</mat-label>
+          <input formControlName="first_name" matInput />
+          <mat-error *ngIf="getErrorForm('first_name')">
+            {{ getErrorFormField('Name') }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form_element" appearance="fill">
+          <mat-label>{{ 'LastName' | translate }}</mat-label>
+          <input formControlName="last_name" matInput />
+          <mat-error *ngIf="getErrorForm('last_name')">
+            {{ getErrorFormField('LastName') }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form_element" appearance="fill">
+          <mat-label>{{ 'Email' | translate }}</mat-label>
+          <input formControlName="email" type="email" matInput />
+          <mat-error *ngIf="getErrorForm('email')">
+            {{ getErrorFormField('Email') }}
+          </mat-error>
+        </mat-form-field>
+      </fieldset>
+
+      <div class="form_element">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="button"
+          [disabled]="!formGroup.valid"
+        >
+          {{ id ? 'Update' : 'Create' | translate }}
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

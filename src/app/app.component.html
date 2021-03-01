@@ -1,0 +1,44 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" class="sidenav" [opened]="opened">
+    <div class="sidenav__logo">
+      <img
+        src="https://acis.org.co/portal/sites/default/files/siigo.png"
+        width="100%"
+        alt="Siigo logo"
+      />
+    </div>
+
+    <div class="sidenav__username">
+      <strong>Jose Altamar</strong>
+    </div>
+
+    <br />
+
+    <mat-divider></mat-divider>
+
+    <mat-nav-list>
+      <app-menu-list-item
+        *ngFor="let item of menu"
+        [item]="item"
+      ></app-menu-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        mat-icon-button
+        (click)="sidenav.toggle()"
+        class="menu-button"
+        fxHide
+        fxShow.lt-md
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
